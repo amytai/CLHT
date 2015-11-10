@@ -105,7 +105,7 @@ extern __thread ssmem_allocator_t* clht_alloc;
 #endif
 
 #define CAS_U64_BOOL(a, b, c) (CAS_U64(a, b, c) == b)
-inline int is_power_of_two(unsigned int x);
+int is_power_of_two(unsigned int x);
 
 typedef uintptr_t clht_addr_t;
 typedef volatile uintptr_t clht_val_t;
@@ -234,7 +234,7 @@ typedef struct ALIGNED(CACHE_LINE_SIZE) clht_hashtable_s
   };
 } clht_hashtable_t;
 
-inline uint64_t __ac_Jenkins_hash_64(uint64_t key);
+uint64_t __ac_Jenkins_hash_64(uint64_t key);
 
 /* Hash a key for a particular hashtable. */
 uint64_t clht_hash(clht_hashtable_t* hashtable, clht_addr_t key );
@@ -353,9 +353,9 @@ size_t clht_size_mem(clht_hashtable_t* hashtable);
 size_t clht_size_mem_garbage(clht_hashtable_t* hashtable);
 
 void clht_gc_thread_init(clht_t* hashtable, int id);
-inline void clht_gc_thread_version(clht_hashtable_t* h);
-inline void clht_gc_thread_version_max();
-inline int clht_gc_get_id();
+void clht_gc_thread_version(clht_hashtable_t* h);
+void clht_gc_thread_version_max();
+int clht_gc_get_id();
 int clht_gc_collect(clht_t* h);
 int clht_gc_collect_all(clht_t* h);
 int clht_gc_free(clht_hashtable_t* hashtable);

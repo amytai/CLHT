@@ -32,7 +32,7 @@
 #include <assert.h>
 #include <malloc.h>
 
-static __thread ht_ts_t* clht_ts_thread = NULL;
+__thread ht_ts_t* clht_ts_thread = NULL;
 
 /* 
  * initialize thread metadata for GC
@@ -62,7 +62,7 @@ clht_gc_thread_init(clht_t* h, int id)
 /* 
  * set the ht version currently used by the current thread
  */
-inline void
+void
 clht_gc_thread_version(clht_hashtable_t* h)
 {
   clht_ts_thread->version = h->version;
@@ -73,7 +73,7 @@ clht_gc_thread_version(clht_hashtable_t* h)
  * to maximum to indicate that there is no ongoing update
  * operation.
  */
-inline void
+void
 clht_gc_thread_version_max()
 {
   clht_ts_thread->version = -1;
@@ -83,7 +83,7 @@ clht_gc_thread_version_max()
 /* 
  * get the GC id of the current thread
  */
-inline int 
+int 
 clht_gc_get_id()
 {
   return clht_ts_thread->id;
