@@ -46,7 +46,7 @@
 #  define DPP(x)
 #endif
 
-#define CACHE_LINE_SIZE    64
+#define CACHE_LINE_SIZE    128
 
 #define MAP_INVLD 0
 #define MAP_VALID 1

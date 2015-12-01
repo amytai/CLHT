@@ -2,7 +2,7 @@
 # Architecture dependent settings
 #################################
 
-CFLAGS = -D_GNU_SOURCE
+CFLAGS = -D_GNU_SOURCE -fPIC
 
 ifeq ($(DEBUG),1)
   DEBUG_FLAGS=-Wall -ggdb -g -DDEBUG

@@ -106,7 +106,7 @@ extern __thread ssmem_allocator_t* clht_alloc;
 #  define DPP(x)
 #endif
 
-#define CACHE_LINE_SIZE    64
+#define CACHE_LINE_SIZE    128
 #define ENTRIES_PER_BUCKET 3
 
 #ifndef ALIGNED

@@ -171,7 +171,7 @@ extern "C" {
 #elif defined(COREi7) | defined(DEFAULT)
 #  define NUMBER_OF_SOCKETS 1
 #  define CORES_PER_SOCKET 8
-#  define CACHE_LINE_SIZE 64
+#  define CACHE_LINE_SIZE 128
 #  define NOP_DURATION 2
   static uint8_t __attribute__ ((unused)) the_cores[] = {
     0, 1, 2, 3, 4, 5, 6, 7
