@@ -180,7 +180,7 @@ extern "C" {
 #elif defined(XEON2)
 #  define NUMBER_OF_SOCKETS 2
 #  define CORES_PER_SOCKET 20
-#  define CACHE_LINE_SIZE 64
+#  define CACHE_LINE_SIZE 128
 #  define NOP_DURATION 2
 
 #  define USE_HYPERTRHEADS 1
