@@ -147,7 +147,10 @@ clht_hashtable_create(uint64_t num_buckets)
       return NULL;
     }
 
-  memset((void*) hashtable->table, 0, num_buckets * (sizeof(bucket_t)));
+  for (size_t i = 0; i < num_buckets * (sizeof(bucket_t)); i++)
+    {
+      ((char*)(hashtable->table))[i] = 0;
+    }
     
   uint64_t i;
   for (i = 0; i < num_buckets; i++)
