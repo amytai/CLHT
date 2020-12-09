@@ -431,14 +431,14 @@ extern "C" {
   }
 
 
-  static inline unsigned long* seed_rand() {
+  /*static inline unsigned long* seed_rand() {
     unsigned long* seeds;
     seeds = (unsigned long*) memalign(64, 64);
     seeds[0] = getticks() % 0x992123E456789LL;
     seeds[1] = getticks() % 0x22136D2436069LL;
     seeds[2] = getticks() % 0x2119F521288629LL;
     return seeds;
-  }
+  }*/
 
   //Marsaglia's xorshf generator
   static inline unsigned long xorshf96(unsigned long* x, unsigned long* y, unsigned long* z) {          //period 2^96-1

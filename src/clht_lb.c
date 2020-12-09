@@ -34,6 +34,12 @@
 #include <string.h>
 
 #include "clht_lb.h"
+void *memalign(size_t alignment, size_t size)
+ {
+    void *ret = NULL;
+    posix_memalign(&ret, alignment, size);
+    return ret;
+}
 
 __thread ssmem_allocator_t* clht_alloc;
 

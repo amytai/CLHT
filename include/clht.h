@@ -38,6 +38,8 @@
 #define true 1
 #define false 0
 
+void *memalign(size_t alignment, size_t size);
+
 /* #define DEBUG */
 
 #if defined(DEBUG)
