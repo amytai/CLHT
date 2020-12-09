@@ -2,7 +2,7 @@
 # Architecture dependent settings
 #################################
 
-CFLAGS = -D_GNU_SOURCE -fPIC
+CFLAGS = -fPIC -D_REENTRANT -DOS_NETBSD -DLEVELDB_PLATFORM_POSIX -O2 -DNDEBUG
 
 ifeq ($(DEBUG),1)
   DEBUG_FLAGS=-Wall -ggdb -g -DDEBUG
@@ -60,10 +60,10 @@ endif
 
 # default setings
 PLATFORM=-DDEFAULT
-GCC=gcc
+GCC=x86_64-rumprun-netbsd-gcc
 PLATFORM_NUMA=0
 OPTIMIZE=
-LIBS += -lrt -lpthread -lm  -lclht -lssmem
+LIBS += -lpthread -lm  -lclht -lssmem
 
 UNAME := $(shell uname -n)
 

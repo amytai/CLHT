@@ -44,7 +44,8 @@ clht_gc_thread_init(clht_t* h, int id)
   assert(clht_alloc != NULL);
   ssmem_alloc_init_fs_size(clht_alloc, SSMEM_DEFAULT_MEM_SIZE, SSMEM_GC_FREE_SET_SIZE, id);
 
-  ht_ts_t* ts = (ht_ts_t*) memalign(CACHE_LINE_SIZE, sizeof(ht_ts_t));
+  ht_ts_t* ts;
+  posix_memalign(&ts, CACHE_LINE_SIZE, sizeof(ht_ts_t));
   assert(ts != NULL);
 
   ts->version = h->ht->version;

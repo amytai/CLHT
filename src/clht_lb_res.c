@@ -86,7 +86,7 @@ bucket_t*
 clht_bucket_create() 
 {
   bucket_t* bucket = NULL;
-  bucket = memalign(CACHE_LINE_SIZE, sizeof(bucket_t));
+  int junk = posix_memalign(&bucket, CACHE_LINE_SIZE, sizeof(bucket_t));
   if (bucket == NULL)
     {
       return NULL;
@@ -121,7 +121,8 @@ clht_hashtable_t* clht_hashtable_create(uint64_t num_buckets);
 clht_t* 
 clht_create(uint64_t num_buckets)
 {
-  clht_t* w = (clht_t*) memalign(CACHE_LINE_SIZE, sizeof(clht_t));
+  clht_t* w;
+  posix_memalign(&w, CACHE_LINE_SIZE, sizeof(clht_t));
   if (w == NULL)
     {
       printf("** malloc @ hatshtalbe\n");
@@ -155,7 +156,7 @@ clht_hashtable_create(uint64_t num_buckets)
     }
     
   /* Allocate the table itself. */
-  hashtable = (clht_hashtable_t*) memalign(CACHE_LINE_SIZE, sizeof(clht_hashtable_t));
+  int junk = posix_memalign(&hashtable, CACHE_LINE_SIZE, sizeof(clht_hashtable_t));
   if (hashtable == NULL) 
     {
       printf("** malloc @ hatshtalbe\n");
@@ -163,7 +164,7 @@ clht_hashtable_create(uint64_t num_buckets)
     }
     
   /* hashtable->table = calloc(num_buckets, (sizeof(bucket_t))); */
-  hashtable->table = (bucket_t*) memalign(CACHE_LINE_SIZE, num_buckets * (sizeof(bucket_t)));
+  junk = posix_memalign(&hashtable->table, CACHE_LINE_SIZE, num_buckets * (sizeof(bucket_t)));
   if (hashtable->table == NULL) 
     {
       printf("** alloc: hashtable->table\n"); fflush(stdout);

@@ -284,7 +284,7 @@ extern "C" {
     return (double)t.tv_sec + ((double)t.tv_usec)/1000000.0;
   }
 
-  static inline void set_cpu(int cpu) {
+  /*static inline void set_cpu(int cpu) {
 #if !defined(NO_SET_CPU)
 #  ifdef __sparc__
     processor_bind(P_LWPID,P_MYID, cpu, NULL);
@@ -300,14 +300,13 @@ extern "C" {
     cpu_set_t mask;
     CPU_ZERO(&mask);
     CPU_SET(cpu, &mask);
-    /* numa_set_preferred(get_cluster(cpu)); */
     pthread_t thread = pthread_self();
     if (pthread_setaffinity_np(thread, sizeof(cpu_set_t), &mask) != 0) {
       fprintf(stderr, "Error setting thread affinity\n");
     }
 #  endif
 #endif
-  }
+  }*/
 
   /* #if defined(__i386__) */
   /*   static inline ticks getticks(void) { */
